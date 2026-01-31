@@ -1,0 +1,62 @@
+// Миксины для переиспользования
+// Доступны как mix.function-name после импорта
+
+@mixin focus-ring {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin transition($property: all, $duration: var(--transition-base)) {
+  transition: $property $duration ease;
+}
+
+@mixin media-min($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin media-max($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
