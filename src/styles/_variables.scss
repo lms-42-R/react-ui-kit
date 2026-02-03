@@ -9,8 +9,8 @@
   --color-primary-dark: #2563eb;
   
   // Background colors
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8fafc;
+  --color-bg-primary: #efefef;
+  --color-bg-secondary: #e4e4e4;
   --color-bg-tertiary: #f1f5f9;
   
   // Text colors
@@ -33,10 +33,6 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   
-  // Убираем закругления для светлой темы
-  --border-radius-sm: 0.125rem;
-  --border-radius-md: 0.25rem;
-  --border-radius-lg: 0.375rem;
 }
 
 // Dark theme
@@ -71,10 +67,6 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
   
-  // Убираем закругления для темной темы
-  --border-radius-sm: 0.125rem;
-  --border-radius-md: 0.25rem;
-  --border-radius-lg: 0.375rem;
 }
 
 // Миксины (будут доступны во всех SCSS файлах)

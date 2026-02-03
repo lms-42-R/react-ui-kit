@@ -1,0 +1,340 @@
+/* Components.module.scss */
+/* Интеграция с глобальными переменными */
+
+@use "../styles/variables";
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+}
+
+.pageHeader {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+  font-weight: 700;
+
+}
+
+.pageDescription {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Components Grid */
+.componentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  z-index: 0;
+}
+
+/* Component Card */
+.componentCard {
+  background-color: var(--color-bg-secondary);
+  padding: 1.75rem;
+  transition: all var(--transition-base) ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform-origin: center;
+  
+  &:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.componentIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+}
+
+.componentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.componentTitle {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  flex: 1;
+}
+
+.componentDescription {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-size: 0.9375rem;
+}
+
+.componentFooter {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: var(font-weight-medium);
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+.badgeSuccess {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.badgeWarning {
+  background-color: var(--color-warning);
+  color: white;
+}
+
+.badgeInfo {
+  background-color: skyblue;
+  color: black;
+}
+
+/* Card Buttons */
+.cardButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast) ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  min-width: 140px;
+  
+  /* Интеграция стилей из Button компонента */
+  &:hover {
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btnOutline {
+  /* Используем стили как в Button outline variant */
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btnInProgress {
+  /* Стиль как Button secondary variant */
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.btnPlanned {
+  /* Стиль как Button ghost variant */
+  background-color: transparent;
+  color: var(--color-text-tertiary);
+  border-color: var(--color-border);
+}
+
+/* Legend */
+.legend {
+  background-color: var(--color-bg-secondary);
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.legendTitle {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  &::before {
+    content: '📋';
+    font-size: 1.25rem;
+  }
+}
+
+.legendItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Status indicators */
+.statusIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.375rem;
+  
+  &.ready {
+    background-color: var(--color-success);
+  }
+  
+  &.in-progress {
+    background-color: var(--color-warning);
+  }
+  
+  &.planned {
+    background-color: var(--color-text-tertiary);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .componentsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  
+  .componentCard {
+    padding: 1.25rem;
+    min-height: 200px;
+  }
+  
+  .componentTitle {
+    font-size: 1.125rem;
+  }
+  
+  .legendItems {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .componentsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .componentCard {
+    min-height: auto;
+  }
+  
+  .componentHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .badge {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+}
+
+/* Анимация при загрузке */
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.componentCard {
+  animation: cardAppear 0.3s ease forwards;
+  transition: .3s;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+/* Дополнительные hover эффекты */
+.componentCard {
+  position: relative;
+  
+  transition: .3s;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      var(--color-primary) 0%, 
+      var(--color-primary-light) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-fast) ease;
+  }
+  
+  &.ready::before {
+    background: linear-gradient(90deg, 
+      var(--color-success) 0%, 
+      #34d399 100%);
+  }
+  
+  &.in-progress::before {
+    background: linear-gradient(90deg, 
+      var(--color-warning) 0%, 
+      #fbbf24 100%);
+  }
+  
+  &:hover::before {
+    transition: .3s;
+    opacity: 1;
+  }
+}
