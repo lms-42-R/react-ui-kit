@@ -85,7 +85,7 @@ const Project = () => {
           <h2 className={styles.sectionTitle}>В цифрах</h2>
           <div className={styles.statsGrid}>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>15+</div>
+              <div className={styles.statNumber}>1+</div>
               <div className={styles.statLabel}>готовых компонентов</div>
             </div>
             <div className={styles.statItem}>
