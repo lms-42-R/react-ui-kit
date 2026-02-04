@@ -7,7 +7,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-
 }
 
 .pageHeader {
@@ -21,7 +20,6 @@
   margin-bottom: 0.5rem;
   color: var(--color-text-primary);
   font-weight: 700;
-
 }
 
 .pageDescription {
@@ -45,20 +43,19 @@
 .componentCard {
   background-color: var(--color-bg-secondary);
   padding: 1.75rem;
-  transition: all var(--transition-base) ease;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 220px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transform-origin: center;
+  transition: .3s;
   
+  /* Плавный подъем как в Project.module.scss */
   &:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 
-      0 8px 25px rgba(0, 0, 0, 0.1),
-      0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    transition: .3s;
   }
 }
 
@@ -136,12 +133,11 @@
   font-size: 0.875rem;
   font-weight: var(--font-weight-medium);
   text-decoration: none;
-  transition: all var(--transition-fast) ease;
+  transition: all 0.2s ease;
   cursor: pointer;
   border: 1px solid transparent;
   min-width: 140px;
   
-  /* Интеграция стилей из Button компонента */
   &:hover {
     transform: translateY(-1px);
   }
@@ -152,21 +148,18 @@
 }
 
 .btnOutline {
-  /* Используем стили как в Button outline variant */
   background-color: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
 .btnInProgress {
-  /* Стиль как Button secondary variant */
   background-color: var(--color-bg-tertiary);
   color: var(--color-text-primary);
   border-color: var(--color-border);
 }
 
 .btnPlanned {
-  /* Стиль как Button ghost variant */
   background-color: transparent;
   color: var(--color-text-tertiary);
   border-color: var(--color-border);
@@ -286,13 +279,12 @@
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 .componentCard {
   animation: cardAppear 0.3s ease forwards;
-  transition: .3s;
+  animation-fill-mode: both;
   
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
@@ -305,8 +297,6 @@
 .componentCard {
   position: relative;
   
-  transition: .3s;
-  
   &::before {
     content: '';
     position: absolute;
@@ -318,7 +308,7 @@
       var(--color-primary) 0%, 
       var(--color-primary-light) 100%);
     opacity: 0;
-    transition: opacity var(--transition-fast) ease;
+    transition: opacity 0.2s ease;
   }
   
   &.ready::before {
@@ -334,7 +324,11 @@
   }
   
   &:hover::before {
-    transition: .3s;
     opacity: 1;
   }
+}
+
+/* Эффект легкого затемнения при наведении */
+.componentCard:hover {
+  background-color: var(--color-bg-tertiary);
 }
