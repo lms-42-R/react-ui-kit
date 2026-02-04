@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTheme } from '../components';
+import { useTheme } from '../hooks/useTheme';
+import styles from './MainLayout.module.scss';
 
 const MainLayout = ({ children }) => {
   const { theme, toggleTheme } = useTheme();
@@ -9,39 +10,74 @@ const MainLayout = ({ children }) => {
   const navItems = [
     { path: '/', label: '🏠 Главная' },
     { path: '/components', label: '🎨 Компоненты' },
+    { path: '/project', label: '📋 О проекте' },
   ];
 
   return (
-    <div className="app">
+    <div className={styles.app}>
       {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="sidebar-header">
-          <h2>UI Kit</h2>
-          <span className="version">v0.1.0</span>
+      <aside className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
+          <h2 className={styles.logo}>React UI Kit</h2>
+          <span className={styles.version}>v0.1.0</span>
         </div>
         
-        <nav className="nav">
+        <nav className={styles.nav}>
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+              className={`${styles.navLink} ${
+                location.pathname === item.path ? styles.active : ''
+              }`}
             >
-              {item.label}
+              <span className={styles.navIcon}>
+                {item.label.split(' ')[0]}
+              </span>
+              <span className={styles.navLabel}>
+                {item.label.split(' ').slice(1).join(' ')}
+              </span>
             </Link>
           ))}
         </nav>
         
-        <div className="sidebar-footer">
-          <button onClick={toggleTheme} className="theme-toggle">
-            {theme === 'light' ? '🌙 Темная' : '☀️ Светлая'}
-          </button>
+        <div className={styles.sidebarFooter}>
+          <div className={styles.githubLink}>
+            <a 
+              href="https://github.com/lms-42-R" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.githubButton}
+            >
+              <img 
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" 
+                alt="GitHub" 
+                className={styles.githubIcon}
+                width="20"
+                height="20"
+              />
+              <span>Мой GitHub</span>
+            </a>
+          </div>
+          <div className={styles.themeSection}>
+            <button 
+              onClick={toggleTheme} 
+              className={styles.themeToggle}
+              aria-label={`Переключить на ${theme === 'light' ? 'темную' : 'светлую'} тему`}
+            >
+              <span className={styles.themeText}>
+                {theme === 'light' ? '⚫ Сделать темную ' : '⚪ Сделать светлую'}
+              </span>
+            </button>
+          </div>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="main">
-        {children}
+      <main className={styles.main}>
+        <div className={styles.contentWrapper}>
+          {children}
+        </div>
       </main>
     </div>
   );
