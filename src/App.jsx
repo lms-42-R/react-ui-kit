@@ -7,6 +7,7 @@ import Components from './pages/Components';
 import ButtonDemo from './pages/ButtonDemo';
 import InProgressPage from './pages/InProgressPage';
 import PlannedPage from './pages/PlannedPage';
+import Project from './pages/Project';
 import './App.css';
 
 const App = () => {
@@ -16,13 +17,14 @@ const App = () => {
         <MainLayout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/project" element={<Project />} />
             <Route path="/components" element={<Components />} />
             <Route path="/button" element={<ButtonDemo />} />
             
             {/* Компоненты в разработке */}
             <Route path="/input" element={<InProgressPage componentName="Input" />} />
             <Route path="/textarea" element={<InProgressPage componentName="Textarea" />} />
-            
+
             {/* Компоненты запланированные */}
             <Route path="/checkbox" element={<PlannedPage componentName="Checkbox" />} />
             <Route path="/radio" element={<PlannedPage componentName="Radio" />} />
